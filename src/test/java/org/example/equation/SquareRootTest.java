@@ -14,6 +14,6 @@ class SquareRootTest {
 
     @Test
     void shouldThrowIllegalStateExceptionWhenAIsZero() {
-        assertThatThrownBy(() -> squareRoot.solve(ZERO_A, 5, 6)).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> squareRoot.solve(ZERO_A, 5.0, 6.0)).isInstanceOf(IllegalStateException.class);
     }
 }
