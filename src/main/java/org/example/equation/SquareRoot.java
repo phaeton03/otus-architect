@@ -17,9 +17,11 @@ public class SquareRoot implements Math {
         if (abs(a) < eps) {
             throw new IllegalArgumentException();
         }
+
         if (a.isNaN() || b.isNaN() || c.isNaN()) {
             throw new NaNFoundException();
         }
+
         if (a.isInfinite() || b.isInfinite() || c.isInfinite()) {
             throw new InfinityFoundException();
         }
@@ -30,11 +32,11 @@ public class SquareRoot implements Math {
             return new Double[0];
         }
 
-        if (abs(discriminant) < eps) {
-            Double squareRoot = -b / (2 * a);
+        if (discriminant > eps) {
 
-            return new Double[] {squareRoot, squareRoot};
+            return new Double[] {(-b + sqrt(discriminant)) / (2 * a), (-b - sqrt(discriminant)) / (2 * a)};
         }
+
         return null;
     }
 }

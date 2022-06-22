@@ -47,6 +47,16 @@ class SquareRootTest {
 
     private static final Double SQUARE_ROOT_ZERO_DISCRIMINANT = -1.0;
 
+    private static final Double A_POSITIVE_DISCRIMINANT = 1.0;
+
+    private static final Double B_POSITIVE_DISCRIMINANT = 5.0;
+
+    private static final Double C_POSITIVE_DISCRIMINANT = 6.0;
+
+    private static final Double SQUARE_ROOT_ONE_POSITIVE_DISCRIMINANT = -2.0;
+
+    private static final Double SQUARE_ROOT_TWO_ZERO_POSITIVE_DISCRIMINANT = -3.0;
+
     private static final Double A_NaN = Double.NaN;
 
     private static final Double B_NaN = Double.NaN;
@@ -98,6 +108,14 @@ class SquareRootTest {
     void shouldSquareRootsBeTheSameIfDiscriminantIsZero() {
         assertThat(squareRoot.solve(A_ZERO_DISCRIMINANT, B_ZERO_DISCRIMINANT, C_ZERO_DISCRIMINANT))
                 .hasSize(2).allMatch(arg -> arg.equals(SQUARE_ROOT_ZERO_DISCRIMINANT));
+    }
+
+    @Test
+    void shouldSquareRootsBeDifferentIfDiscriminantIsPositive() {
+        assertThat(squareRoot.solve(A_POSITIVE_DISCRIMINANT, B_POSITIVE_DISCRIMINANT, C_POSITIVE_DISCRIMINANT))
+                .hasSize(2)
+                .doesNotHaveDuplicates()
+                .contains(SQUARE_ROOT_ONE_POSITIVE_DISCRIMINANT, SQUARE_ROOT_TWO_ZERO_POSITIVE_DISCRIMINANT);
     }
 
     static Stream<Arguments> getNaNArgs() {
