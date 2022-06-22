@@ -39,6 +39,14 @@ class SquareRootTest {
 
     private static final Double C_NEG_DISCRIMINANT = 10.0;
 
+    private static final Double A_ZERO_DISCRIMINANT = 1.0;
+
+    private static final Double B_ZERO_DISCRIMINANT = 2.0;
+
+    private static final Double C_ZERO_DISCRIMINANT = 1.0;
+
+    private static final Double SQUARE_ROOT_ZERO_DISCRIMINANT = 1.0;
+
     private static final Double A_NaN = Double.NaN;
 
     private static final Double B_NaN = Double.NaN;
@@ -82,8 +90,14 @@ class SquareRootTest {
     }
 
     @Test
-    void shouldDiscriminantBeNegative() {
+    void shouldSquareRootsBeEmptyIfDiscriminantIsNegative() {
         assertThat(squareRoot.solve(A_NEG_DISCRIMINANT, B_NEG_DISCRIMINANT, C_NEG_DISCRIMINANT)).isEmpty();
+    }
+
+    @Test
+    void shouldSquareRootsBeTheSameIfDiscriminantIsZero() {
+        assertThat(squareRoot.solve(A_ZERO_DISCRIMINANT, B_ZERO_DISCRIMINANT, C_ZERO_DISCRIMINANT))
+                .hasSize(2).allMatch(arg -> arg.equals(SQUARE_ROOT_ZERO_DISCRIMINANT));
     }
 
     static Stream<Arguments> getNaNArgs() {
