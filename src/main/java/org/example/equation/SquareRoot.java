@@ -1,5 +1,6 @@
 package org.example.equation;
 
+import org.example.exception.NaNFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,10 @@ public class SquareRoot implements Math {
         if (abs(a) < eps) {
             throw new IllegalArgumentException();
         }
+        if (a.isNaN() || b.isNaN() || c.isNaN()) {
+            throw new NaNFoundException();
+        }
+
         return new Double[0];
     }
 }
