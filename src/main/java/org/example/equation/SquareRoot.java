@@ -26,6 +26,9 @@ public class SquareRoot implements Math {
 
         Double discriminant = b * b - 4 * a * c;
 
+        if (discriminant < eps) {
+            return new Double[0];
+        }
         return null;
     }
 }
