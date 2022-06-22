@@ -1,5 +1,6 @@
 package org.example.equation;
 
+import org.example.exception.InfinityFoundException;
 import org.example.exception.NaNFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,9 @@ public class SquareRoot implements Math {
         }
         if (a.isNaN() || b.isNaN() || c.isNaN()) {
             throw new NaNFoundException();
+        }
+        if (a.isInfinite() || b.isInfinite() || c.isInfinite()) {
+            throw new InfinityFoundException();
         }
 
         return new Double[0];
