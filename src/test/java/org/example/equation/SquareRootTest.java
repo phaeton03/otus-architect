@@ -33,6 +33,12 @@ class SquareRootTest {
 
     private static final Double C = 10.0;
 
+    private static final Double A_NEG_DISCRIMINANT = 5.0;
+
+    private static final Double B_NEG_DISCRIMINANT = 7.0;
+
+    private static final Double C_NEG_DISCRIMINANT = 10.0;
+
     private static final Double A_NaN = Double.NaN;
 
     private static final Double B_NaN = Double.NaN;
@@ -73,6 +79,11 @@ class SquareRootTest {
     @MethodSource("getInfinityArgs")
     void shouldFoundInfinityInParams(Double a, Double b, Double c) {
         assertThatThrownBy(() -> squareRoot.solve(a, b, c)).isInstanceOf(InfinityFoundException.class);
+    }
+
+    @Test
+    void shouldDiscriminantBeNegative() {
+        assertThat(squareRoot.solve(A_NEG_DISCRIMINANT, B_NEG_DISCRIMINANT, C_NEG_DISCRIMINANT)).isEmpty();
     }
 
     static Stream<Arguments> getNaNArgs() {

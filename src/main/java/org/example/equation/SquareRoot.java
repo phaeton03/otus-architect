@@ -24,6 +24,8 @@ public class SquareRoot implements Math {
             throw new InfinityFoundException();
         }
 
-        return new Double[0];
+        Double discriminant = b * b - 4 * a * c;
+
+        return null;
     }
 }
