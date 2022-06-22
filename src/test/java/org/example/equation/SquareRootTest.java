@@ -45,7 +45,7 @@ class SquareRootTest {
 
     private static final Double C_ZERO_DISCRIMINANT = 1.0;
 
-    private static final Double SQUARE_ROOT_ZERO_DISCRIMINANT = 1.0;
+    private static final Double SQUARE_ROOT_ZERO_DISCRIMINANT = -1.0;
 
     private static final Double A_NaN = Double.NaN;
 

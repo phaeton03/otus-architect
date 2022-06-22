@@ -31,7 +31,9 @@ public class SquareRoot implements Math {
         }
 
         if (abs(discriminant) < eps) {
+            Double squareRoot = -b / (2 * a);
 
+            return new Double[] {squareRoot, squareRoot};
         }
         return null;
     }
