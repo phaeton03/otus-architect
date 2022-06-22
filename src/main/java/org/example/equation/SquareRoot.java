@@ -14,7 +14,6 @@ public class SquareRoot implements Math {
     public Double[] solve(Double a, Double b, Double c) {
         if (abs(a) < eps) {
             throw new IllegalArgumentException();
-
         }
         return new Double[0];
     }
