@@ -1,5 +1,6 @@
 package org.example.equation;
 
+import org.example.exception.InfinityFoundException;
 import org.example.exception.NaNFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -68,12 +69,30 @@ class SquareRootTest {
         assertThatThrownBy(() -> squareRoot.solve(a, b, c)).isInstanceOf(NaNFoundException.class);
     }
 
+    @ParameterizedTest
+    @MethodSource("getInfinityArgs")
+    void shouldFoundInfinityInParams(Double a, Double b, Double c) {
+        assertThatThrownBy(() -> squareRoot.solve(a, b, c)).isInstanceOf(InfinityFoundException.class);
+    }
+
     static Stream<Arguments> getNaNArgs() {
 
         return Stream.of(
                 arguments(A_NaN, B, C),
                 arguments(A, B_NaN, C),
                 arguments(A, B, C_NaN)
+        );
+    }
+
+    static Stream<Arguments> getInfinityArgs() {
+
+        return Stream.of(
+                arguments(A_NEGATIVE_INFINITY, B, C),
+                arguments(A, B_NEGATIVE_INFINITY, C),
+                arguments(A, B, C_NEGATIVE_INFINITY),
+                arguments(A_POSITIVE_INFINITY, B, C),
+                arguments(A, B_POSITIVE_INFINITY, C),
+                arguments(A, B, C_POSITIVE_INFINITY)
         );
     }
 }
