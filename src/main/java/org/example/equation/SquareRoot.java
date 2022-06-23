@@ -32,6 +32,12 @@ public class SquareRoot implements Math {
             return new Double[0];
         }
 
+        if (abs(discriminant) < eps) {
+            Double squareRoot = -b / (2 * a);
+
+            return new Double[] {squareRoot, squareRoot};
+        }
+
         if (discriminant > eps) {
 
             return new Double[] {(-b + sqrt(discriminant)) / (2 * a), (-b - sqrt(discriminant)) / (2 * a)};
